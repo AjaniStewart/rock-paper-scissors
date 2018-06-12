@@ -5,116 +5,16 @@
         <title>Rock Paper Scissors Game</title>
     </head>
     <body>
-        <script>
-            function computerPlay()
-            {
-                let answer = Math.floor(Math.random() * 3);
-                switch (answer) 
-                {
-                    case 0: return "rock";
-                    case 1: return "paper";
-                    default: return "scissors";
-                }
-            }
-            //returns 1 if player wins, 0 if draw, -1 if loses, returns a string if bad input
-            //never actually do this
-            function playRound(playerSelection, computerSelection)
-            {
-                playerSelection = playerSelection.toLowerCase();
-                switch(playerSelection)
-                {
-                    case "rock":
-                    {
-                        if (computerSelection === "rock") 
-                        {
-                            console.log("Draw");
-                            return 0;
-                        }
-                        else if (computerSelection === "paper") 
-                        {
-                            console.log("You lose! Paper beats rock!");
-                            return -1;
-                        }
-                        
-                        else 
-                        {
-                            console.log("You win! Rock beats scissors!");
-                            return 1;
-                        }
-                        
-                    }
-                    case "paper":
-                    {
-                        if (computerSelection === "rock")
-                        {
-                            console.log("You win! Paper beats rock!");
-                            return 1;
-                        }
-                        else if (computerSelection === "paper") 
-                        {
-                            console.log("Draw");
-                            return 0;
-                        }
-                        else
-                        {
-                            console.log("You lose! Scissors beats paper!");
-                            return -1;
-                        } 
-                        
-                    }
+        <h1>What will you throw?</h1>
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
 
-                    case "scissors":
-                    {
-                        if (computerSelection === "rock") 
-                        {
-                            console.log("You lose! Rock beats scissors!");
-                            return -1;
-                        }
-                        else if (computerSelection === "paper") 
-                        {
-                            console.log("You win! Scissors beats paper!");
-                            return 1;
-                        }
-                        
-                        else 
-                        {
-                            console.log("Draw");
-                            return 0;
-                        }
-                    }
-                    default: return "Error: Unknown player selection in function 'playRound()'";
-                }
-            }
-            //plays a five found game
-            function game()
-            {
-                let playerScore = 0;
-                let computerScore = 0;
-                for (let i = 0; i < 5; ++i)
-                {
-                    let playerSelection = prompt("What will you throw this round?");
-                    let roundResult = playRound(playerSelection,computerPlay());
-                    if (typeof roundResult === "string")
-                    {
-                        alert(roundResult);
-                        continue;
-                    }
-                    if (roundResult === 1) ++playerScore;
-                    else if (roundResult === -1) ++computerScore;
-                    console.log(`Player Score: ${playerScore} \t Computer Score: ${computerScore}`);
-                }
-                
-                if (playerScore > computerScore)
-                {
-                    console.log("You Won!");
-                } 
-                else if (playerScore < computerScore)
-                {
-                    console.log("You lost...");
-                } 
-                else console.log("It was a draw");
-            }
-            game();
-        </script>
+        <div class="result">
+            <h3 class="score"></h3>
+            <h3 class="action"></h3>
+            <h3 class="end"></h3>
+        </div>
+        <script src="game.js"></script>
     </body>
 </html>
